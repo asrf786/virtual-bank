@@ -1,0 +1,75 @@
+body {
+  background-color: white;
+}
+
+/* Navigation Bar  */
+.navigation-menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: aliceblue;
+}
+
+.navigation-menu img {
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+}
+.navigation-menu input {
+  text-align: center;
+  margin: 5px;
+}
+
+/* Heading bar */
+.heading-section {
+  display: flex;
+  justify-content: space-between;
+}
+.heading-section h2 {
+  font-size: 4rem;
+}
+
+/* Main Section  */
+.account-section {
+  display: grid;
+  height: 50vh;
+  gap: 3rem;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: auto auto;
+}
+.statement-row-main {
+  grid-row: span 2;
+  overflow: scroll;
+}
+.statement-row {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+/* Transfer Section and loan section*/
+.transfer-section,
+.loan-section {
+  padding: 2px;
+  border-radius: 5px;
+  text-align: center;
+}
+.transfer-section {
+  border: 2px solid orange;
+  background-color: orange;
+}
+.loan-section {
+  background-color: aqua;
+}
+
+.tran-section input {
+  margin: 5px;
+}
+
+/* Footer Section */
+footer {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+}
