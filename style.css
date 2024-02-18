@@ -8,6 +8,8 @@ body {
   justify-content: space-between;
   padding: 10px;
   background-color: aliceblue;
+
+  box-shadow: 10px 5px 5px rgb(54, 238, 245);
 }
 
 .navigation-menu img {
@@ -24,11 +26,14 @@ body {
 .heading-section {
   display: flex;
   justify-content: space-between;
+  padding-top: 10px;
 }
 .heading-section h2 {
   font-size: 4rem;
 }
-
+.name-section {
+  font-size: 2rem;
+}
 /* Main Section  */
 .account-section {
   display: grid;
@@ -45,6 +50,7 @@ body {
   display: flex;
   justify-content: space-around;
   padding: 5px;
+  border-radius: 5px;
 }
 
 /* Transfer Section and loan section*/
@@ -72,4 +78,15 @@ footer {
   position: absolute;
   bottom: 0;
   left: 50%;
+  z-index: 10;
+}
+
+/* Add CSS style using DOM */
+.deposit {
+  background-color: #a3eea3;
+  border-bottom: 1px solid white;
+}
+.withdraw {
+  background-color: #f56967;
+  border-bottom: 1px solid white;
 }
