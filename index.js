@@ -4,7 +4,8 @@
 const account1 = {
   name: "Abed Ashraf",
   movements: [
-    400, 600, -100, 500, -250, 300, -280, -200, 100, 200, 450, 1200, -370, -270,
+    800, 1500, -100, -500, -250, -300, -280, 1200, 500, -200, 450, 1200, -370,
+    -270,
   ],
   pin: 1234,
 };
@@ -12,7 +13,8 @@ const account1 = {
 const account2 = {
   name: "John Wick",
   movements: [
-    500, -250, -200, 100, 200, -270, 300, -350, 280, 765, 700, 900, 560, -230,
+    1500, -250, -200, -100, -200, -270, 1200, -350, -280, -765, -700, 1500,
+    -560, -230,
   ],
   pin: 5678,
 };
@@ -128,6 +130,7 @@ const displayMovements = function (movements) {
   );
   totalBalance.textContent = `£${finalBalance}`;
 };
+
 // Deposit or Withdraw
 const depositOrWithdraw = function (btnUsed) {
   const valueEnterd = Number(amountToAddOrRemove.value);
@@ -190,39 +193,3 @@ const displayDemo = function (movements, str) {
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
-
-// Practise Code
-// let a = 111;
-// let b = 999;
-// const obj = { a: 23, b: 43, c: 56 };
-// ({ a, b } = obj);
-// console.log(a, b);
-// console.log(obj.a, obj.b);
-
-// const myselfObject = {
-//   firstname: "Ashraf",
-//   lastname: "Abed",
-//   libraryTime: {
-//     monday: {
-//       start: 930,
-//       end: 1700,
-//     },
-//     saturday: {
-//       start: 1200,
-//       end: 1700,
-//       price: [100, 200],
-//     },
-//   },
-//   birthYear: 1992,
-// };
-
-// console.log(myselfObject.libraryTime.saturday.start);
-// console.log(myselfObject.libraryTime.saturday.price[1]);
-// const {
-//   libraryTime: {
-//     saturday: { end, price },
-//   },
-// } = myselfObject;
-// const [a, b] = price;
-// console.log(b);
-// console.log(a, end);
