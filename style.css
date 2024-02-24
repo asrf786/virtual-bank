@@ -1,5 +1,10 @@
 body {
   background-color: white;
+  background-image: linear-gradient(
+    to right,
+    rgb(233, 236, 238),
+    rgb(250, 230, 244)
+  );
 }
 
 /* Navigation Bar  */
@@ -7,9 +12,9 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background-color: aliceblue;
+  background-color: rgb(74, 162, 240);
 
-  box-shadow: 10px 5px 5px rgb(54, 238, 245);
+  /* box-shadow: 10px 5px 5px rgb(54, 238, 245); */
 }
 
 .navigation-menu img {
@@ -89,4 +94,9 @@ footer {
 .withdraw {
   background-color: #f56967;
   border-bottom: 1px solid white;
+}
+
+/* Display Deposit Or Withdraw */
+.display-row {
+  margin: 10px 200px 0 0;
 }

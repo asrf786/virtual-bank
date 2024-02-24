@@ -21,9 +21,9 @@
       <img src="./src/currency-bitcoin.svg" alt="logo" />
       <h1>Virtual BANK</h1>
       <form>
-        <input type="text" placeholder="username" />
-        <input type="password" placeholder="password" />
-        <button>Log In</button>
+        <input type="text" placeholder="username" class="login-username" />
+        <input type="password" placeholder="password" class="login-pin" />
+        <button class="login-btn">Log In</button>
       </form>
     </nav>
     <!-- Navigation Bar End -->
@@ -34,12 +34,10 @@
         <!-- Heading of account Start-->
         <section>
           <div class="heading-section">
-            <p class="name-section">Welcome Mr. Abed</p>
+            <p class="name-section">Welcome Mr. XXXX</p>
             <div>
-              <p>
-                Your Balance : <span class="username-section">Username</span>
-              </p>
-              <h2>£22561</h2>
+              <p>Your Balance : <span class="username-section">XX</span></p>
+              <h2 id="total-balance">£0000</h2>
             </div>
           </div>
         </section>
@@ -84,15 +82,38 @@
           </div>
         </div>
         <!-- Display Account Statament End-->
+
+        <!-- Display Deposit Or Withdraw -->
+
+        <button class="deposit-btn">Show Deposit</button>
+
+        <button class="withdraw-btn">Show Withdraw</button>
+        <div class="display-row">
+          <div class="statement-row">
+            <p>1 Deposit</p>
+            <p>17/02/2024</p>
+            <p>£100</p>
+          </div>
+          <div class="statement-row">
+            <p>1 Deposit</p>
+            <p>17/02/2024</p>
+            <p>£100</p>
+          </div>
+          <div class="statement-row">
+            <p>1 Deposit</p>
+            <p>17/02/2024</p>
+            <p>£100</p>
+          </div>
+        </div>
       </div>
     </main>
     <!-- Main division End -->
 
     <!-- Footer -->
 
-    <footer class="footer">
+    <!-- <footer class="footer">
       <p>2024&copy; Virtual Bank</p>
-    </footer>
+    </footer> -->
 
     <!-- Bootstrap Script Link -->
     <script
