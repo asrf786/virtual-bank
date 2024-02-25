@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Virtual BANK</title>
+    <title>Virtual BANK V2</title>
     <!-- Bootstrap style link -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -24,17 +24,40 @@
         <input type="text" placeholder="username" class="login-username" />
         <input type="password" placeholder="password" class="login-pin" />
         <button class="login-btn">Log In</button>
+        <br />
+        <label class="hidden error">Username or Password is not Valid</label>
+        <button class="logout-btn hidden">Log Out</button>
       </form>
     </nav>
     <!-- Navigation Bar End -->
 
     <!-- Main division Start -->
     <main>
-      <div class="container">
+      <div class="container hidden">
+        <!-- Hidden Division Start-->
+        <div class="model hidden">
+          <button class="home-btn btn btn-secondary">&times;</button>
+
+          <h1>Last Transaction</h1>
+          <form class="tran-section">
+            <div class="last-tran">
+              <p>Last Deposit</p>
+              <p>£500</p>
+            </div>
+            <button class="remove-tran btn btn-danger">
+              Delete This Record
+            </button>
+          </form>
+        </div>
+        <div class="overlay hidden"></div>
+        <!-- Hidden Division End -->
         <!-- Heading of account Start-->
         <section>
           <div class="heading-section">
-            <p class="name-section">Welcome Mr. XXXX</p>
+            <div>
+              <p class="name-section">Welcome Mr. XXXX</p>
+              <h1 class="message">All Transaction</h1>
+            </div>
             <div>
               <p>Your Balance : <span class="username-section">XX</span></p>
               <h2 id="total-balance">£0000</h2>
@@ -66,28 +89,26 @@
             <form class="tran-section">
               <!-- <input type="number" placeholder="Account number" /> -->
               <input type="number" placeholder="amount" class="amount-enter" />
-              <button class="btn-deposit">Deposit</button>
-              <button class="btn-withdraw">Withdraw</button>
+              <button class="btn-deposit btn btn-success">Deposit</button>
+              <button class="btn-withdraw btn btn-warning">Withdraw</button>
             </form>
           </div>
           <div class="loan-section">
-            <p>Remove Last Transaction</p>
-            <form class="tran-section">
-              <div class="last-tran">
-                <p>Last Deposit</p>
-                <p>£500</p>
-              </div>
-              <button class="remove-tran">Remove</button>
-            </form>
+            <button class="show-last-tran btn btn-info">
+              Last Transaction
+            </button>
+            <button class="deposit-btn btn btn-info">Show Deposit</button>
+
+            <button class="withdraw-btn btn btn-info">Show Withdraw</button>
+            <button class="all-tran-btn btn btn-info">
+              Show All Transaction
+            </button>
           </div>
         </div>
         <!-- Display Account Statament End-->
 
         <!-- Display Deposit Or Withdraw -->
 
-        <button class="deposit-btn">Show Deposit</button>
-
-        <button class="withdraw-btn">Show Withdraw</button>
         <div class="display-row">
           <div class="statement-row">
             <p>1 Deposit</p>
