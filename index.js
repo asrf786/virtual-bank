@@ -3,24 +3,25 @@
 // Accounts of User
 const account1 = {
   name: "Abed Ashraf",
-  movements: [
-    800, 1500, -100, -500, -250, -300, -280, 1200, 500, -200, 450, 1200, -370,
-    -270,
-  ],
+  movements: [800, 1500, -100, -500, 200],
   pin: 1234,
+  dates: ["01/02/2024", "05/02/2024", "14/02/2024", "21/02/2024", "25/02/2024"],
+  total: 0,
+  saving: 20000,
 };
 
 const account2 = {
   name: "John Wick",
-  movements: [
-    1500, -250, -200, -100, -200, -270, 1200, -350, -280, -765, -700, 1500,
-    -560, -230,
-  ],
+  movements: [1500, -250, -200, -100, -200],
   pin: 5678,
+  dates: ["02/02/2024", "04/02/2024", "10/02/2024", "11/02/2024", "11/02/2024"],
+  total: 0,
+  saving: 30000,
 };
 
 const accounts = [account1, account2];
 let currentAccount;
+
 // Selceting Class Elements for DOM
 
 const mainContainer = document.querySelector(".container");
@@ -33,6 +34,7 @@ const depositBtn = document.querySelector(".btn-deposit");
 const withdrawBtn = document.querySelector(".btn-withdraw");
 const amountToAddOrRemove = document.querySelector(".amount-enter");
 const displayDepositOrWithdraw = document.querySelector(".display-row");
+const savingBtn = document.querySelector(".saving-btn");
 const btnDepo = document.querySelector(".deposit-btn");
 const btnWith = document.querySelector(".withdraw-btn");
 const btnAll = document.querySelector(".all-tran-btn");
@@ -53,6 +55,13 @@ const msgLable = document.querySelector(".message");
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
+
+// Generate Date
+const now = new Date();
+const day = `${now.getDate()}`.padStart(2, 0);
+const month = `${now.getMonth() + 1}`.padStart(2, 0);
+const year = `${now.getFullYear()}`.padStart(2, 0);
+const today = `${day}/${month}/${year}`;
 
 // Create Username using forEach and Map Method
 
@@ -77,11 +86,10 @@ loginBtn.addEventListener("click", function (e) {
     mainContainer.classList.remove("hidden");
 
     document.querySelector(".error").classList.add("hidden");
+
     nameOfUser.textContent = `Welcome ${currentAccount.name}`;
 
-    userName.textContent = currentAccount.username;
-
-    displayMovements(currentAccount.movements);
+    displayMovements(currentAccount.movements, currentAccount.dates);
     loginPin.value = loginUsername.value = "";
     loginUsername.classList.add("hidden");
     loginPin.classList.add("hidden");
@@ -97,6 +105,7 @@ loginBtn.addEventListener("click", function (e) {
     }
   }
 });
+
 //LogOut Button
 
 logOutBtn.addEventListener("click", function (e) {
@@ -111,16 +120,27 @@ logOutBtn.addEventListener("click", function (e) {
 // Deposit or Withdraw
 const depositOrWithdraw = function (btnUsed) {
   const valueEnterd = Number(amountToAddOrRemove.value);
-
   if (valueEnterd) {
     const amountValue = btnUsed === "deposit" ? valueEnterd : -valueEnterd;
-    currentAccount.movements.push(amountValue);
-    console.log(currentAccount.movements);
-    displayMovements(currentAccount.movements);
-    // displayLastTrans();
+    if (btnUsed === "deposit" && valueEnterd <= currentAccount.saving) {
+      currentAccount.movements.push(amountValue);
+      currentAccount.dates.push(today);
+      currentAccount.saving = currentAccount.saving - valueEnterd;
+      displayMovements(currentAccount.movements, currentAccount.dates);
+    } else if (btnUsed === "withdraw" && valueEnterd <= currentAccount.total) {
+      currentAccount.movements.push(amountValue);
+      currentAccount.dates.push(today);
+
+      currentAccount.saving = currentAccount.saving + valueEnterd;
+      displayMovements(currentAccount.movements, currentAccount.dates);
+    } else {
+      msgLable.textContent = "Not Valid";
+      msgLable.style.color = "red";
+    }
   }
   amountToAddOrRemove.value = "";
 };
+
 // Deposit Amount to transaction
 depositBtn.addEventListener("click", function (e) {
   e.preventDefault();
@@ -130,7 +150,7 @@ depositBtn.addEventListener("click", function (e) {
 // Withdraw Amount to transaction
 withdrawBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  depositOrWithdraw();
+  depositOrWithdraw("withdraw");
 });
 
 // Show All Transaction
@@ -139,7 +159,7 @@ btnAll.addEventListener("click", function (e) {
   msgLable.textContent = "Showing All transaction";
   msgLable.style.color = "Black";
 
-  displayMovements(currentAccount.movements);
+  displayMovements(currentAccount.movements, currentAccount.dates);
 });
 
 // Display Last Transaction
@@ -154,11 +174,13 @@ const displayLastTrans = function () {
   lastTrans.innerHTML = "";
   const lastNumber =
     currentAccount.movements[currentAccount.movements.length - 1];
-  console.log(lastNumber);
+  const lastDate = currentAccount.dates[currentAccount.dates.length - 1];
   if (lastNumber) {
     const type2 = lastNumber > 0 ? "deposit" : "withdraw";
     const html2 = `<h2>${type2}
-               £${lastNumber}</h2>`;
+               £${lastNumber}</h2>
+               <h3>${lastDate}
+               `;
     lastTrans.insertAdjacentHTML("afterbegin", html2);
   } else {
     const html2 = `<p>No Transaction Found</p>
@@ -177,9 +199,9 @@ removeBtn.addEventListener("click", function (e) {
   e.preventDefault();
 
   // console.log(currentAccount.movements.pop());
-  console.log(currentAccount.movements);
-  console.log(currentAccount.movements.pop());
-  displayMovements(currentAccount.movements);
+  currentAccount.movements.pop();
+  currentAccount.dates.pop();
+  displayMovements(currentAccount.movements, currentAccount.dates);
   model.classList.add("hidden");
   overlay.classList.add("hidden");
 
@@ -198,7 +220,7 @@ homeBtn.addEventListener("click", function (e) {
 });
 overlay.addEventListener("click", homeFunction);
 
-//Display Deposi or Withdraw
+//Display Deposit or Withdraw
 
 const displayDemo = function (movements, str) {
   displayDepositOrWithdraw.innerHTML = "";
@@ -212,8 +234,7 @@ const displayDemo = function (movements, str) {
   take.forEach(function (mov, i) {
     const html3 = `<div class="statement-row ${str}">
                     <p>${i + 1} ${str}</p>
-                    <p>17/02/2024</p>
-                    <p>£${mov}</p>
+                    <p>£${Math.abs(mov)}</p>
                   </div>`;
 
     movementsContainer.insertAdjacentHTML("afterbegin", html3);
@@ -225,30 +246,31 @@ btnDepo.addEventListener("click", function (e) {
 
   msgLable.textContent = "Showing All Deposits";
   msgLable.style.color = "Blue";
-  displayDemo(currentAccount.movements, "deposit");
+  displayDemo(currentAccount.movements, "deposit", currentAccount.dates);
 });
 btnWith.addEventListener("click", function (e) {
   e.preventDefault();
 
   msgLable.textContent = "Showing All Withdraw";
   msgLable.style.color = "Red";
-  displayDemo(currentAccount.movements, "withdraw");
+  displayDemo(currentAccount.movements, "withdraw", currentAccount.dates);
 });
 //////////////////////////////////////////////////////////////////////////////
 // Display Movements Using DOM ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
-const displayMovements = function (movements) {
+const displayMovements = function (movements, dates) {
   movementsContainer.innerHTML = "";
   displayDepositOrWithdraw.innerHTML = "";
   msgLable.textContent = "Showing All transaction";
   msgLable.style.color = "Black";
+  savingBtn.textContent = `Saving : £${currentAccount.saving}`;
 
   movements.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdraw";
     const html = `<div class="statement-row ${type}">
                     <p>${i + 1} ${type}</p>
-                    <p>17/02/2024</p>
-                    <p>£${mov}</p>
+                    <p>${dates[i]}</p>
+                    <p>£${Math.abs(mov).toFixed(2)}</p>
                   </div>`;
     movementsContainer.insertAdjacentHTML("afterbegin", html);
   });
@@ -260,16 +282,5 @@ const displayMovements = function (movements) {
     0
   );
   totalBalance.textContent = `£${finalBalance}`;
+  currentAccount.total = finalBalance;
 };
-
-/////////////////////////////////////////////////////////////////////////////////////////
-///////////////////       Calling Function  /////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-
-/////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////

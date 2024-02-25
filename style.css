@@ -65,9 +65,13 @@ body {
   border-radius: 5px;
   text-align: center;
 }
+
 .transfer-section {
-  border: 2px solid orange;
   background-color: rgb(58, 235, 248);
+  padding: 10px;
+}
+.tran-section button {
+  margin-top: 4px;
 }
 .loan-section {
   padding: 10px;
