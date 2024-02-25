@@ -24,7 +24,8 @@ let currentAccount;
 
 // Selceting Class Elements for DOM
 
-const mainContainer = document.querySelector(".container");
+const mainContainer = document.querySelector(".main-container");
+const logInDiv = document.querySelector(".log-in-div");
 const movementsContainer = document.querySelector(".statement-row-main");
 const removeBtn = document.querySelector(".remove-tran");
 const lastTrans = document.querySelector(".last-tran");
@@ -83,6 +84,7 @@ loginBtn.addEventListener("click", function (e) {
   currentAccount = accounts.find((acc) => acc.username === loginUsername.value);
   if (currentAccount && currentAccount.pin === Number(loginPin.value)) {
     //Display User`s Name
+    logInDiv.classList.add("hidden");
     mainContainer.classList.remove("hidden");
 
     document.querySelector(".error").classList.add("hidden");
@@ -98,7 +100,6 @@ loginBtn.addEventListener("click", function (e) {
     // loginPin.blur();
     // displayLastTrans();
   } else {
-    userName.textContent = "Not Valid Username !";
     document.querySelector(".error").classList.remove("hidden");
     if (!mainContainer.classList.contains("hidden")) {
       mainContainer.classList.add("hidden");
@@ -111,6 +112,7 @@ loginBtn.addEventListener("click", function (e) {
 logOutBtn.addEventListener("click", function (e) {
   e.preventDefault();
   mainContainer.classList.add("hidden");
+  logInDiv.classList.remove("hidden");
   loginUsername.classList.remove("hidden");
   loginPin.classList.remove("hidden");
   loginBtn.classList.remove("hidden");

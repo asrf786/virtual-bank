@@ -150,3 +150,16 @@ footer {
   backdrop-filter: blur(3px);
   z-index: 5;
 }
+/* Login Form */
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+  margin-top: 200px;
+}
+.form-signin input {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.sign-info {
+  margin-top: 100px;
+}

@@ -21,19 +21,47 @@
       <img src="./src/currency-bitcoin.svg" alt="logo" />
       <h1>Virtual BANK</h1>
       <form>
-        <input type="text" placeholder="username" class="login-username" />
-        <input type="password" placeholder="password" class="login-pin" />
-        <button class="login-btn btn btn-light">Log In</button>
-        <br />
-        <label class="hidden error">Username or Password is not Valid</label>
         <button class="logout-btn hidden btn btn-secondary">Log Out</button>
       </form>
     </nav>
     <!-- Navigation Bar End -->
+    <!-- BootStrap Main Login Start -->
+    <div class="container log-in-div">
+      <main class="form-signin w-100 m-auto">
+        <form>
+          <h1 class="sign-info h3 mb-3 fw-normal">Please sign in</h1>
 
+          <div class="form-floating">
+            <input
+              type="text"
+              placeholder="username"
+              class="login-username form-control"
+              id="floatingInput"
+            />
+            <label for="floatingInput">Username</label>
+          </div>
+          <div class="form-floating">
+            <input
+              type="password"
+              placeholder="password"
+              class="login-pin form-control"
+              id="floatingPassword"
+            />
+            <label for="floatingPassword">Password</label>
+          </div>
+          <button class="login-btn btn btn-primary w-100 py-2" type="submit">
+            Log In
+          </button>
+
+          <label class="error hidden">Username or Password is not Valid</label>
+        </form>
+      </main>
+    </div>
+    <!-- BootStrap Main Login End -->
     <!-- Main division Start -->
+
     <main>
-      <div class="container hidden">
+      <div class="container main-container hidden">
         <!-- Hidden Division Start-->
         <div class="model hidden">
           <button class="home-btn btn btn-secondary">&times;</button>
