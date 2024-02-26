@@ -18,7 +18,7 @@
   <body>
     <!-- Navigation Bar Start -->
     <nav class="navigation-menu">
-      <img src="./src/currency-bitcoin.svg" alt="logo" />
+      <img src="./src/bank.svg" alt="logo" />
       <h1>Virtual BANK</h1>
       <form>
         <button class="logout-btn hidden btn btn-secondary">Log Out</button>
@@ -27,35 +27,58 @@
     <!-- Navigation Bar End -->
     <!-- BootStrap Main Login Start -->
     <div class="container log-in-div">
-      <main class="form-signin w-100 m-auto">
-        <form>
-          <h1 class="sign-info h3 mb-3 fw-normal">Please sign in</h1>
+      <div>
+        <main class="form-signin w-100 m-auto">
+          <form>
+            <h1 class="sign-info h3 mb-3 fw-normal">Please sign in</h1>
 
-          <div class="form-floating">
-            <input
-              type="text"
-              placeholder="username"
-              class="login-username form-control"
-              id="floatingInput"
-            />
-            <label for="floatingInput">Username</label>
-          </div>
-          <div class="form-floating">
-            <input
-              type="password"
-              placeholder="password"
-              class="login-pin form-control"
-              id="floatingPassword"
-            />
-            <label for="floatingPassword">Password</label>
-          </div>
-          <button class="login-btn btn btn-primary w-100 py-2" type="submit">
-            Log In
-          </button>
+            <div class="form-floating">
+              <input
+                type="text"
+                placeholder="username"
+                class="login-username form-control"
+                id="floatingInput"
+              />
+              <label for="floatingInput">Username</label>
+            </div>
+            <div class="form-floating">
+              <input
+                type="password"
+                placeholder="password"
+                class="login-pin form-control"
+                id="floatingPassword"
+              />
+              <label for="floatingPassword">Password</label>
+            </div>
+            <button class="login-btn btn btn-primary w-100 py-2" type="submit">
+              Log In
+            </button>
 
-          <label class="error hidden">Username or Password is not Valid</label>
-        </form>
-      </main>
+            <label class="error hidden"
+              >Username or Password is not Valid</label
+            >
+          </form>
+        </main>
+      </div>
+      <div class="test-user">
+        <h5>Test Users :</h5>
+        <div>
+          <h6>Username : js</h6>
+          <h6>Password : 1234</h6>
+        </div>
+        <div>
+          <h6>Username : jw</h6>
+          <h6>Password : 5678</h6>
+        </div>
+        <div>
+          <h6>Username : ts</h6>
+          <h6>Password : 1111</h6>
+        </div>
+        <div>
+          <h6>Username : hp</h6>
+          <h6>Password : 2222</h6>
+        </div>
+      </div>
     </div>
     <!-- BootStrap Main Login End -->
     <!-- Main division Start -->
@@ -89,6 +112,7 @@
             </div>
             <div>
               <h2 id="total-balance">£0000</h2>
+              <h6>As of Today : <span class="date-label">25/02/2024</span></h6>
             </div>
           </div>
         </section>
@@ -131,9 +155,11 @@
             <button class="show-last-tran btn btn-info">
               Last Transaction
             </button>
-            <button class="deposit-btn btn btn-info">Show Deposit</button>
+            <button class="deposit-btn btn btn-info">Show Deposit Only</button>
 
-            <button class="withdraw-btn btn btn-info">Show Withdraw</button>
+            <button class="withdraw-btn btn btn-info">
+              Show Withdraw Only
+            </button>
             <button class="all-tran-btn btn btn-info">
               Show All Transaction
             </button>

@@ -2,24 +2,63 @@
 
 // Accounts of User
 const account1 = {
-  name: "Abed Ashraf",
-  movements: [800, 1500, -100, -500, 200],
+  name: "Jack Sparrow",
+  movements: [800, 1500, -100, -500, 200, 300, 400, -500, -250, 500, 400],
   pin: 1234,
-  dates: ["01/02/2024", "05/02/2024", "14/02/2024", "21/02/2024", "25/02/2024"],
+  dates: [
+    "01/01/2024",
+    "05/01/2024",
+    "10/01/2024",
+    "26/01/2024",
+    "27/01/2024",
+    "01/02/2024",
+    "05/02/2024",
+    "14/02/2024",
+    "21/02/2024",
+    "25/02/2024",
+    "26/02/2024",
+  ],
   total: 0,
-  saving: 20000,
+  saving: 6000,
 };
 
 const account2 = {
   name: "John Wick",
-  movements: [1500, -250, -200, -100, -200],
+  movements: [1500, -250, -200, -100, -200, 1000, 2000, -2500],
   pin: 5678,
-  dates: ["02/02/2024", "04/02/2024", "10/02/2024", "11/02/2024", "11/02/2024"],
+  dates: [
+    "02/02/2024",
+    "04/02/2024",
+    "10/02/2024",
+    "11/02/2024",
+    "11/02/2024",
+    "26/02/2024",
+    "27/02/2024",
+    "29/2/2024",
+  ],
   total: 0,
-  saving: 30000,
+  saving: 3000,
 };
 
-const accounts = [account1, account2];
+const account3 = {
+  name: "Tony Stark",
+  movements: [500, 500, 1000, -750, -600],
+  pin: 1111,
+  dates: ["01/01/2024", "04/01/2024", "10/02/2024", "10/02/2024", "22/02/2024"],
+  total: 0,
+  saving: 2000,
+};
+
+const account4 = {
+  name: "Harry potter",
+  movements: [100, 100, -100, 500, -200],
+  pin: 2222,
+  dates: ["01/12/2023", "02/02/2024", "13/02/2024", "17/02/2024", "20/02/2024"],
+  total: 0,
+  saving: 1000,
+};
+
+const accounts = [account1, account2, account3, account4];
 let currentAccount;
 
 // Selceting Class Elements for DOM
@@ -49,6 +88,7 @@ const nameOfUser = document.querySelector(".name-section");
 const model = document.querySelector(".model");
 const overlay = document.querySelector(".overlay");
 const msgLable = document.querySelector(".message");
+const dateLabel = document.querySelector(".date-label");
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -285,4 +325,5 @@ const displayMovements = function (movements, dates) {
   );
   totalBalance.textContent = `£${finalBalance}`;
   currentAccount.total = finalBalance;
+  dateLabel.textContent = `${today}`;
 };

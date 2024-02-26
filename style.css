@@ -12,7 +12,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background-color: rgb(74, 162, 240);
+  background-color: #0275d8;
 
   /* box-shadow: 10px 5px 5px rgb(54, 238, 245); */
 }
@@ -38,12 +38,14 @@ body {
 }
 .name-section {
   font-size: 2rem;
+  color: rebeccapurple;
 }
+
 /* Main Section  */
 .account-section {
   display: grid;
   height: 50vh;
-  gap: 3rem;
+  gap: 1rem;
   grid-template-columns: 4fr 1fr;
   grid-template-rows: auto auto;
 }
@@ -61,6 +63,8 @@ body {
 /* Transfer Section and loan section*/
 .transfer-section,
 .loan-section {
+  /* margin-top: 0; */
+  /* margin-bottom: 0; */
   padding: 2px;
   border-radius: 5px;
   text-align: center;
@@ -154,12 +158,17 @@ footer {
 .form-signin {
   max-width: 330px;
   padding: 1rem;
-  margin-top: 200px;
 }
 .form-signin input {
   margin-top: 10px;
   margin-bottom: 20px;
 }
 .sign-info {
-  margin-top: 100px;
+  margin-top: 50px;
+}
+.test-user {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }
